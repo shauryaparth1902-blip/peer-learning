@@ -202,7 +202,7 @@ export default function Landing() {
       </nav>
 
       {/* Hero */}
-      <section className="container relative grid items-center gap-16 px-6 pb-24 pt-40 lg:grid-cols-2">
+      <section className="container relative grid items-center gap-16 px-6 pb-24 pt-32 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
