@@ -10,6 +10,8 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 
 import Navbar from "./components/Navbar";
 import Chatbot from "./components/Chatbot";
+import StudyRooms from "./components/StudyRooms";
+import Room from "./components/Room";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -141,6 +143,29 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+
+              <Route
+                path="/rooms"
+                element={
+                  <ProtectedRoute>
+                    <WithNav>
+                      <StudyRooms />
+                    </WithNav>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/rooms/:id"
+                element={
+                  <ProtectedRoute>
+                    <WithNav>
+                      <Room />
+                    </WithNav>
+                  </ProtectedRoute>
+                }
+              />
+
               <Route path="/become-mentor" element={<BecomeMentor />} />
 
               <Route
