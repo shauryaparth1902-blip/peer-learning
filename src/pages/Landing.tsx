@@ -89,11 +89,8 @@ export default function Landing() {
 
   const [open, setOpen] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
-<<<<<<< HEAD
   
-=======
   const [streak, setStreak] = useState<number | null>(null);
->>>>>>> upstream/main
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1800);
@@ -101,8 +98,6 @@ export default function Landing() {
     return () => clearTimeout(timer);
   }, []);
 
-<<<<<<< HEAD
-=======
   useEffect(() => {
     // Device-local daily streak using localStorage
     const KEY_STREAK = "pl_streak";
@@ -144,7 +139,6 @@ export default function Landing() {
       setStreak(0);
     }
   }, []);
->>>>>>> upstream/main
 
   if (loading) {
     return (
