@@ -96,7 +96,8 @@ A modern peer-to-peer learning platform where students can connect, collaborate,
 <img width="100%" alt="AI Assistant" src="./src/screenshots/ai-chat.png">
 
 ---
-
+## Demo Video
+ [Watch Demo Video](./assets/demo.mp4)
 
 # 🧠 Problem Statement
 
