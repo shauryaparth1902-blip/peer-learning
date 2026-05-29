@@ -76,7 +76,8 @@ const [summaryLoading, setSummaryLoading] =
         .select("*")
         .order("created_at", {
           ascending: false,
-        });
+        })
+        .limit(50);
 
       if (error) {
         console.log(error);
