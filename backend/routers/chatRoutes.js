@@ -48,19 +48,35 @@ router.post("/chat", requireAuth, rateLimiter, async (req, res) => {
       return res.status(400).json({ error: "A non-empty messages array is required." });
     }
 
+    if (messages.length > 50) {
+      return res.status(400).json({ error: "Maximum of 50 messages allowed per request." });
+    }
+
     // Validate each message has the expected shape to avoid sending malformed
     // requests upstream.
+    let totalLength = 0;
     const isValid = messages.every(
-      (m) =>
-        typeof m === "object" &&
-        (m.role === "user" || m.role === "assistant" || m.role === "system") &&
-        typeof m.content === "string"
+      (m) => {
+        if (
+          typeof m !== "object" ||
+          (m.role !== "user" && m.role !== "assistant" && m.role !== "system") ||
+          typeof m.content !== "string"
+        ) {
+          return false;
+        }
+        totalLength += m.content.length;
+        return true;
+      }
     );
 
     if (!isValid) {
       return res
         .status(400)
         .json({ error: "Each message must have a role (user|assistant|system) and a string content field." });
+    }
+
+    if (totalLength > 20000) {
+      return res.status(400).json({ error: "Total message content exceeds maximum allowed length." });
     }
 
     // Reject unknown models to prevent cost escalation.
